@@ -11,18 +11,23 @@ namespace TheDinnerParty
         string playerInput;
         public int playerInputToInt;
         int inputHeight = 28;
-
         static bool loopBreak = false;
 
+      
+   
         public void GetChoiceInput(int numberOfChoices)
         {
             loopBreak = false;
-
             while (loopBreak == false)//loop until input is valid
             {
                 Console.SetCursorPosition(1, inputHeight);
                 Console.ForegroundColor = ConsoleColor.Gray;//input is always gray
                 playerInput = Console.ReadLine();//get input
+
+                if (CheckIfNotesAreOpened() == true)
+                   //OpenNotebook();
+
+
                 ClearInputLine();
                 if (CheckIfChoiceIsValid(numberOfChoices))//if the input isn't valid
                 {
@@ -88,9 +93,13 @@ namespace TheDinnerParty
             return false;
         }
 
-        void RespondToInput()
+        bool CheckIfNotesAreOpened()
         {
+            if (playerInput.ToLower() == "n")
+                return true;
 
+            else
+                return false;
         }
     }
 }

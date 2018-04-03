@@ -45,7 +45,6 @@
     <Compile Include="Content.cs" />
     <Compile Include="CrimeScenePage.cs" />
     <Compile Include="Input.cs" />
-    <Compile Include="Interface.cs" />
     <Compile Include="IntroPage.cs" />
     <Compile Include="NotesPage.cs" />
     <Compile Include="Program.cs" />

@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace TheDinnerParty
 {
-    class CrimeScenePage
+    class CrimeScenePage : Content
     {
-        Content myContent = new Content();
-        Input myInput = new Input();
-        Interface myInterface = new Interface();
 
         private List<string> CrimeText = new List<string>();
         private List<string> choiceList = new List<string>();
@@ -19,9 +16,9 @@ namespace TheDinnerParty
         {
             SetScreen();
             DetectiveBanterText1();
-            myInterface.DrawScreen();
+            DrawScreen();
             DetectiveBanterText2();
-            myInterface.DrawScreen();
+            DrawScreen();
 
             Console.Read();
         }
@@ -30,9 +27,9 @@ namespace TheDinnerParty
         {
 
             Console.Title = "The Dinner Party : Crime Scene";
-            myInterface.location = "Crime Scene";           
+            location = "Crime Scene";           
             Console.CursorVisible = true;
-            myInterface.DrawScreen();
+            DrawScreen();
 
         }
 
@@ -51,7 +48,7 @@ namespace TheDinnerParty
 
         void DetectiveBanterText2()
         {
-            switch (myInput.playerInputToInt)
+            switch (playerInputToInt)
             {
                 case 1:
                     CrimeText.Add("\"Well it's good to know you're not getting a big head about it.\"");
@@ -79,7 +76,6 @@ namespace TheDinnerParty
         void CrimeSceneSearchText1()
         {
             CrimeText.Add("At first glance, the room looks like an ordinary bedroom.");
-            CrimeText.Add("")lllllll
         }
 
         void MedicalExaminerText1()
@@ -103,25 +99,25 @@ namespace TheDinnerParty
         }
         void CrimeSceneChoices1()
         {
-            myContent.showNotes = true;
+            showNotes = true;
 
         }
         void MedicalExaminerChoices1()
         {
-            myContent.showNotes = true;
+            showNotes = true;
         }
         #endregion
 
 
         void AddAllText()
         {
-            myContent.AddContent(CrimeText);
+            AddContent(CrimeText);
             CrimeText.Clear();
         }
         void AddChoicesForInput()
         {
-            myContent.ShowChoices(choiceList);//display choices
-            myInput.GetChoiceInput(choiceList.Count());//get input about choices
+            ShowChoices(choiceList);//display choices
+            GetChoiceInput(choiceList.Count());//get input about choices
             choiceList.Clear();
         }
 

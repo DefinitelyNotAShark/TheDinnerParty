@@ -40,17 +40,6 @@ namespace TheDinnerParty
         }
 
 
-        void GameLoop()
-        {
-            while (gameOver == false)
-            {
-                IntroPage intro = new IntroPage();
-                intro.StartIntro();
-            }
-        }
-
-
-
         static void DontAllowResize()//got this code from windows.
         {
             IntPtr handle = GetConsoleWindow();

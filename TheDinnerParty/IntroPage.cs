@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace TheDinnerParty
 {
-    class IntroPage
+    class IntroPage : Content
     { 
-        Interface myInterface = new Interface();
-        Content myContent = new Content();
-        Input myInput = new Input();
         CrimeScenePage myCrimeScene = new CrimeScenePage();
 
         private List<string> IntroText = new List<string>();
@@ -22,15 +19,15 @@ namespace TheDinnerParty
         {
             SetScreen();
             AddText1();
-            myInterface.DrawScreen();
+            DrawScreen();
             AddText2();
-            myInterface.DrawScreen();
+            DrawScreen();
             AddText3();
 
             while(replay)
             {
-                myInterface.DrawScreen();
-                myInput.playerInputToInt = 1;//set it to instruction choice
+                DrawScreen();
+                playerInputToInt = 1;//set it to instruction choice
                 AddText3();
             }
 
@@ -40,7 +37,7 @@ namespace TheDinnerParty
         private void AddText3()
         {
             Console.SetCursorPosition(1, 28);
-            switch (myInput.playerInputToInt)
+            switch (playerInputToInt)
             {                
                 case 1://answer the phone
                     IntroText.Add("It's your supervisor.");
@@ -79,7 +76,7 @@ namespace TheDinnerParty
                     IntroText.Add("");
                     IntroText.Add("\"Did you understand everything I told you?\"");
                     IntroText.Add("");
-                    myContent.AddContent(IntroText);
+                    AddContent(IntroText);
                     IntroText.Clear();
                     AddChoices3();                
                     break;
@@ -87,7 +84,7 @@ namespace TheDinnerParty
                     IntroText.Add("You decide not to answer the phone.");
                     IntroText.Add("A few moments later, your supervisor texts you some information and a location.");
                     IntroText.Add("");
-                    myContent.AddContent(IntroText);
+                    AddContent(IntroText);
                     IntroText.Clear();
                     AddChoices4();
                     break;
@@ -96,7 +93,7 @@ namespace TheDinnerParty
 
         private void AddText2()
         {
-            switch (myInput.playerInputToInt)//check what you chose and change response based on it...
+            switch (playerInputToInt)//check what you chose and change response based on it...
             {
                 case 1://coffee
                     IntroText.Add("Coffee, huh? I thought so.");
@@ -122,7 +119,7 @@ namespace TheDinnerParty
             }
             IntroText.Add("");
             IntroText.Add("Just as you start to settle down, the phone begins to ring...");
-            myContent.AddContent(IntroText);
+            AddContent(IntroText);
             IntroText.Clear();
             AddChoices2();
         }
@@ -131,17 +128,17 @@ namespace TheDinnerParty
         {
             choiceList.Add("Answer the phone");
             choiceList.Add("Let it ring (skip the tutorial/introduction)");
-            myContent.ShowChoices(choiceList);//display choices
-            myInput.GetChoiceInput(choiceList.Count());//get input about choices
+            ShowChoices(choiceList);//display choices
+            GetChoiceInput(choiceList.Count());//get input about choices
             choiceList.Clear();
         }
 
         private void SetScreen()
         {
             Console.Title = "The Dinner Party : Intro";
-            myContent.showNotes = false;
+            showNotes = false;
             Console.CursorVisible = true;
-            myInterface.DrawScreen();
+            DrawScreen();
         }
 
         private void AddText1()
@@ -152,7 +149,7 @@ namespace TheDinnerParty
             IntroText.Add("What is your favorite drink, by the way?");
             IntroText.Add("");
             IntroText.Add("(type a number that matches your choice and then hit enter)");
-            myContent.AddContent(IntroText);
+            AddContent(IntroText);
             IntroText.Clear();
             AddChoices1();
         }
@@ -164,8 +161,8 @@ namespace TheDinnerParty
             choiceList.Add("Soda");
             choiceList.Add("Hot chocolate");
             choiceList.Add("Some other drink");
-            myContent.ShowChoices(choiceList);//display choices
-            myInput.GetChoiceInput(choiceList.Count());//get input about choices
+            ShowChoices(choiceList);//display choices
+            GetChoiceInput(choiceList.Count());//get input about choices
             choiceList.Clear();
         }
 
@@ -174,10 +171,10 @@ namespace TheDinnerParty
             IntroText.Add("");
             IntroText.Add("(press enter to continue)");
             Console.CursorVisible = false;
-            myContent.AddContent(IntroText);
+            AddContent(IntroText);
             Console.ReadLine();
             IntroText.Clear();
-            myInterface.DrawScreen();
+            DrawScreen();
             Console.CursorVisible = true;
         }
 
@@ -185,10 +182,10 @@ namespace TheDinnerParty
         {
             choiceList.Add("Got it! (head to the crime scene)");
             choiceList.Add("Can you please repeat what you just said word for word?");
-            myContent.ShowChoices(choiceList);//display choices
-            myInput.GetChoiceInput(choiceList.Count());//get input about choices
+            ShowChoices(choiceList);//display choices
+            GetChoiceInput(choiceList.Count());//get input about choices
 
-            if (myInput.playerInputToInt == 2)
+            if (playerInputToInt == 2)
                 replay = true;
             else
                 replay = false;
@@ -199,8 +196,8 @@ namespace TheDinnerParty
         void AddChoices4()
         {
             choiceList.Add("Go to crime scene");
-            myContent.ShowChoices(choiceList);
-            myInput.GetChoiceInput(choiceList.Count());
+            ShowChoices(choiceList);
+            GetChoiceInput(choiceList.Count());
             choiceList.Clear();
         }
     }
