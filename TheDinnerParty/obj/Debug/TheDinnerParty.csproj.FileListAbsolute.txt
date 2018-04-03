@@ -1,0 +1,7 @@
+C:\Users\Sophie\Documents\Visual Studio 2017\Projects\TheDinnerParty\TheDinnerParty\bin\Debug\TheDinnerParty.exe.config
+C:\Users\Sophie\Documents\Visual Studio 2017\Projects\TheDinnerParty\TheDinnerParty\bin\Debug\TheDinnerParty.exe
+C:\Users\Sophie\Documents\Visual Studio 2017\Projects\TheDinnerParty\TheDinnerParty\bin\Debug\TheDinnerParty.pdb
+C:\Users\Sophie\Documents\Visual Studio 2017\Projects\TheDinnerParty\TheDinnerParty\obj\Debug\TheDinnerParty.csprojResolveAssemblyReference.cache
+C:\Users\Sophie\Documents\Visual Studio 2017\Projects\TheDinnerParty\TheDinnerParty\obj\Debug\TheDinnerParty.csproj.CoreCompileInputs.cache
+C:\Users\Sophie\Documents\Visual Studio 2017\Projects\TheDinnerParty\TheDinnerParty\obj\Debug\TheDinnerParty.exe
+C:\Users\Sophie\Documents\Visual Studio 2017\Projects\TheDinnerParty\TheDinnerParty\obj\Debug\TheDinnerParty.pdb
