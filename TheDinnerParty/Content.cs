@@ -57,6 +57,14 @@ namespace TheDinnerParty
             }
         }
 
+        public void ClueAlert(string clue)
+        {
+            Console.SetCursorPosition(2, 16);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("You have a new clue: " + clue);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
         void AddNotesChoice()
         {
             Console.SetCursorPosition(50, choiceHeight);
