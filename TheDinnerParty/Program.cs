@@ -29,12 +29,12 @@ namespace TheDinnerParty
         static void Main(string[] args)
         {
             TitleScreen myTitleScreen = new TitleScreen();
-            IntroPage myIntroPage = new IntroPage();
+            SceneOfTheCrime crimeScenePage = new SceneOfTheCrime();
             Console.Title = "The Dinner Party";
             DontAllowResize();
             myTitleScreen.DrawTitleScreen();
             Console.ReadKey();
-            myIntroPage.StartIntro();
+            crimeScenePage.StartCrimeScene();
             Console.CursorVisible = true;
             
         }

@@ -23,11 +23,6 @@ namespace TheDinnerParty
                 Console.SetCursorPosition(1, inputHeight);
                 Console.ForegroundColor = ConsoleColor.Gray;//input is always gray
                 playerInput = Console.ReadLine();//get input
-
-                //if (CheckIfNotesAreOpened() == true)
-                //     OpenNotebook();
-  
-
                 ClearInputLine();
                 if (CheckIfChoiceIsValid(numberOfChoices))//if the input isn't valid
                 {

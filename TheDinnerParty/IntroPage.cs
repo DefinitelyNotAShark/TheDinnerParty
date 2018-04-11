@@ -8,7 +8,7 @@ namespace TheDinnerParty
 {
     class IntroPage : Content
     { 
-        CrimeScenePage myCrimeScene = new CrimeScenePage();
+        SceneOfTheCrime myCrimeScene = new SceneOfTheCrime();
 
         private List<string> IntroText = new List<string>();
         private List<string> choiceList = new List<string>();

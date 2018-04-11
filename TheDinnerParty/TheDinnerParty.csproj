@@ -43,12 +43,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Content.cs" />
-    <Compile Include="CrimeScenePage.cs" />
+    <Compile Include="SceneOfTheCrime.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="IntroPage.cs" />
     <Compile Include="NotesPage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchCrimeScene.cs" />
+    <Compile Include="SuspectInterviewPage.cs" />
+    <Compile Include="Suspects.cs" />
+    <Compile Include="TalkToME.cs" />
     <Compile Include="TitleScreen.cs" />
   </ItemGroup>
   <ItemGroup>
