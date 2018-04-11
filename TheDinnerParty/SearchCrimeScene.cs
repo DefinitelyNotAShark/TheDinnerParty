@@ -31,6 +31,9 @@ namespace TheDinnerParty
             placestextList.Add("You see some loose floorboards in the corner.");
             placestextList.Add("There's a closet on the far wall.");
 
+            Console.Title = "The Dinner Party : Search Crime Scene";
+            location = "Crime Scene";
+
             CrimeSceneDescription();//only use once
 
             while (cluesFound < 3)

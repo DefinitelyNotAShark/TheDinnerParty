@@ -15,7 +15,7 @@ namespace TheDinnerParty
         public void StartInterview()
         {
             Console.Title = "The Dinner Party : Suspect Interviews";
-            location = "Police Station";
+            location = "House";
             DrawScreen();
             IntroductionText1();
         }

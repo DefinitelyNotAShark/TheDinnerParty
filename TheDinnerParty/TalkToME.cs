@@ -15,6 +15,9 @@ namespace TheDinnerParty
 
         public void Start()
         {
+            Console.Title = "The Dinner Party : Medical Examiner";
+            location = "Crime Scene";
+
             DrawScreen();
             MedicalExaminerText1();
             DrawScreen();
