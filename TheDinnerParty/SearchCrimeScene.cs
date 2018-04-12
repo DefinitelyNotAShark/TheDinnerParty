@@ -25,12 +25,6 @@ namespace TheDinnerParty
         public void Start()
         {
             DrawScreen();
-            placestextList.Add("There's a large bed that's neatly made.");
-            placestextList.Add("There's a desk next to the bed.");
-            placestextList.Add("There's a trash can next to the desk full of papers.");
-            placestextList.Add("You see some loose floorboards in the corner.");
-            placestextList.Add("There's a closet on the far wall.");
-
             Console.Title = "The Dinner Party : Search Crime Scene";
             location = "Crime Scene";
 
@@ -85,10 +79,11 @@ namespace TheDinnerParty
         {
             CrimeText.Add("At first glance, the room looks like an ordinary bedroom.");
             CrimeText.Add("");
-            foreach (string a in placestextList)
-            {
-                CrimeText.Add(a);
-            }
+            CrimeText.Add("There's a very ordinary bed.");
+            CrimeText.Add("There's a desk with papers on it.");
+            CrimeText.Add("There's a trash can filled to the brim with papers.");
+            CrimeText.Add("There are a couple of floorboards that look a bit loose.");
+            CrimeText.Add("There's a closet in the corner.");
             AddAllText();           
         }
 
@@ -235,13 +230,6 @@ namespace TheDinnerParty
             CrimeText.Add("You've already checked that place out, remember?");
             CrimeText.Add("Choose another place.");
             AddAllText();
-
-            choiceList.Add("Search bed");//add all choices regardless of what player has already seen
-            choiceList.Add("Search desk");
-            choiceList.Add("Search trash can");
-            choiceList.Add("Search floorboards");
-            choiceList.Add("Search closet");
-            AddChoicesForInput();
         }
 
         #region userInterface Functions

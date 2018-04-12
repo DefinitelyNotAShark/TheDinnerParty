@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace TheDinnerParty
 {
-    class Input
+    abstract class Input
     {
         string playerInput;
         public int playerInputToInt;
         int inputHeight = 28;
         static bool loopBreak = false;
+        NotesPage notes;
 
       
    
@@ -70,10 +71,40 @@ namespace TheDinnerParty
                     playerInputToInt = 8;
                     break;
                     #endregion
+
             }
 
             for (int i = 1; i < numberOfChoices + 1; i++)//checks if you typed a number that corresponds with a choice
             {
+                //if (playerInput.ToLower() == "n")
+                //{
+                //    if (notes == null)
+                //    {
+                //        if (NotesPage.notebookOpened == false)
+                //        {
+                //            notes = new NotesPage();
+                //            notes.OpenNotebook();
+                //        }
+
+                //        else
+                //        {
+                //            notes = new NotesPage();
+                //            notes.CloseNotebook();
+                //        }
+                //    }
+                //    else
+                //    {
+                //        if (NotesPage.notebookOpened == false)
+                //        {
+                //            notes.OpenNotebook();
+                //        }
+
+                //        else
+                //        {
+                //            notes.CloseNotebook();
+                //        }
+                //    }
+                //}               
                 if (playerInputToInt == i)
                 {
                     return true;
@@ -86,15 +117,6 @@ namespace TheDinnerParty
                 }
             }
             return false;
-        }
-
-        bool CheckIfNotesAreOpened()
-        {
-            if (playerInput.ToLower() == "n")
-                return true;
-
-            else
-                return false;
         }
     }
 }

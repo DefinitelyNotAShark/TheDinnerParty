@@ -17,7 +17,9 @@ namespace TheDinnerParty
             Console.Title = "The Dinner Party : Suspect Interviews";
             location = "House";
             DrawScreen();
+            Suspects.AddSuspectsWithInitialClues();//this is how the interface knows who the killer is
             IntroductionText1();
+            IntroductionText2();
         }
 
         #region Texts
@@ -37,18 +39,13 @@ namespace TheDinnerParty
             switch (playerInputToInt)
             {
                 case 1://agatha
-                    InterviewText.Add("You decide to speak to the party's host first.");
-                    InterviewText.Add("It does make sense.");
-                    InterviewText.Add("");
-                    InterviewText.Add("The woman you are sitting with is in her late 60s.");
-                    InterviewText.Add("She's got quite a lot of jewelry hanging from her neck and ears.");
-                    InterviewText.Add("She stares off into the distance, refusing to make eye contact with you.");
-                    InterviewText.Add("");
-                    InterviewText.Add("What are you going to ask her about?");
+                    
                     break;
                 case 2://peter
                     break;
                 case 3://gabriel
+                    GabrielsInterview gabrielsInterview = new GabrielsInterview();
+                    gabrielsInterview.StartGabrielInterview();
                     break;
                 case 4://irene
                     break;
@@ -70,53 +67,8 @@ namespace TheDinnerParty
             choiceList.Add("Irene Payne (mother's friend)");
             choiceList.Add("Larissa McCarthy (fiancee)");
             AddChoicesForInput();
-        }
-
-        void AgathaChoices()
-        {
-            choiceList.Add("How do you know all your guests?");
-            choiceList.Add("Where were you from 10:00 to 11:00?");
-            choiceList.Add("");
-        }
-
-        void IreneChoices()
-        {
-            choiceList.Add("");
-            choiceList.Add("Where were you from 10:00 to 11:00?");
-            choiceList.Add("");
-        }
-
-        void GabrielChoices()
-        {
-            choiceList.Add("");
-            choiceList.Add("Where were you from 10:00 to 11:00?");
-            choiceList.Add("");
-        }
-
-        void LarissaChoices()
-        {
-            choiceList.Add("");
-            choiceList.Add("Where were you from 10:00 to 11:00?");
-            choiceList.Add("");
-        }
-
-        void PeterChoices()
-        {
-            choiceList.Add("");
-            choiceList.Add("Where were you from 10:00 to 11:00?");
-            choiceList.Add("");
-        }
+        }       
         #endregion
-
-
-
-
-
-
-
-
-
-
 
         #region userInterface Functions
         void AddAllText()

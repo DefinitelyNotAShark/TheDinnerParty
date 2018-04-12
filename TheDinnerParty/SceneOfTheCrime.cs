@@ -23,6 +23,7 @@ namespace TheDinnerParty
             DrawScreen();
             DetectiveBanterText2();
             DrawScreen();
+            showNotes = true;
             CheckChoiceForCrimeSceneOrME();
         }
 

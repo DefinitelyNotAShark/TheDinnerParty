@@ -49,7 +49,6 @@ namespace TheDinnerParty
             CrimeText.Add("He was killed during a dinner party his mother was hosting.");
             AddAllText();
             //choices
-            showNotes = true;
             choiceList.Add("Is there anything else important I should know?");
             AddChoicesForInput();
 

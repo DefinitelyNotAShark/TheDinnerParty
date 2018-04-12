@@ -22,7 +22,7 @@ namespace TheDinnerParty
         int choiceHeight = 15;//this is the bottom of the content screen. Maybe I'll draw a line there later.
         int choiceNumber = 1;//this is the eventual number of choices that i'll have that will display
 
-        public bool showNotes = false;
+        public static bool showNotes = false;
 
         public void AddContent(List<string> content)//make a list of strings and put them in this func. to show on display.
         {
@@ -38,14 +38,21 @@ namespace TheDinnerParty
 
         public void ShowChoices(List<string> choices)
         {
+
             choiceNumber = 1;//reset the choice num
             choiceHeight = 20;//reset choice height
+
+            if (NotesPage.notebookOpened)          
+                choiceHeight = 24;
+
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(2, choiceHeight);
             Console.WriteLine("Choices: ");
 
             if (showNotes)
+            {
                 AddNotesChoice();
+            }
 
             Console.ForegroundColor = ConsoleColor.Cyan;
             foreach(string s in choices)
@@ -68,7 +75,11 @@ namespace TheDinnerParty
         void AddNotesChoice()
         {
             Console.SetCursorPosition(50, choiceHeight);
+            if(NotesPage.notebookOpened == false)
             Console.WriteLine("Press \"N\" to open your notes.");
+
+            else if(NotesPage.notebookOpened == true)
+                Console.WriteLine("Press \"B\" to get back to the case.");
         }
 
         public void DrawScreen()
@@ -122,7 +133,7 @@ namespace TheDinnerParty
             Console.SetCursorPosition(titlePos, headerHeight);
             WriteThis(ConsoleColor.White, "Notes");
             Console.SetCursorPosition(headerPos, headerHeight);
-            WriteThis(ConsoleColor.White, NotesPage.notePageType);
+            WriteThis(ConsoleColor.White, NotesPage.notePageType);//this isn't showing up yet
             Console.SetCursorPosition(0, headerHeight + 1);
 
             for (int i = 0; i < width; i++)
