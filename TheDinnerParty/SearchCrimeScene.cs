@@ -147,6 +147,10 @@ namespace TheDinnerParty
                         CrimeText.Add("It doesn't take a lot of digging around in the trash can to find a bunch of");
                         CrimeText.Add("papers crumpled up at the bottom of the bin.");
                         CrimeText.Add("Straightening out the papers reveals a typed script that seems to be the first draft of a story.");
+                        CrimeText.Add("");
+                        CrimeText.Add("You think you recognize the title.");
+                        CrimeText.Add("One of the officers identifies it as a sequal to a bestseller book.");
+                        CrimeText.Add("The first book was written by Gabriel Garrison, one of the guests.");
                         ClueAlert("Story script");
                         checkedTrashCan = true;
 
@@ -193,12 +197,10 @@ namespace TheDinnerParty
                     else
                     {
                         CrimeText.Add("Surprisingly enough, there's a bunch of clothes in the closet.");
-                        CrimeText.Add("Upon closer inspection, ");
+                        CrimeText.Add("You push aside the clothes to find...");
                         CrimeText.Add("");
-                        CrimeText.Add("You have the police dust it for prints and run the badge number.");
-                        CrimeText.Add("Seems it belongs to the victim's uncle, a retired police officer, though the badge was never reported missing.");
-                        CrimeText.Add("Strangely, the fingerprints match those of the victim's fiancee, Larissa.");
-                        ClueAlert("Police badge with fingerprints");
+                        CrimeText.Add("More clothes. How surprising.");
+                        CrimeText.Add("Seems like there's nothing of note in the closet.");
                         checkedCloset = true;
 
                         if (cluesFound == 1)

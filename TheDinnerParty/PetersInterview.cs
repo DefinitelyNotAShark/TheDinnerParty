@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace TheDinnerParty
 {
-    class PetersInterview
+    class PetersInterview : Content
     {
+        public void StartPeterInterview()
+        {
+            Console.Title = "The Dinner Party : Interview";
+            location = "Police Station";
+            DrawScreen();
+
+            //GabrielDescription();
+            //DrawScreen();
+            //GabrielDescriptionResponse();
+            //DrawScreen();
+            //GabrielQuestions();
+        }
     }
 }

@@ -42,10 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgathasInterview.cs" />
     <Compile Include="Content.cs" />
     <Compile Include="GabrielsInterview.cs" />
-    <Compile Include="IrenesInterview.cs" />
     <Compile Include="LarissasInterview.cs" />
     <Compile Include="PetersInterview.cs" />
     <Compile Include="SceneOfTheCrime.cs" />

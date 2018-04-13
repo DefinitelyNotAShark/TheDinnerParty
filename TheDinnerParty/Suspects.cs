@@ -9,24 +9,21 @@ namespace TheDinnerParty
     class Suspects
     {
         public static List<string> SuspectList = new List<string>();
+        public static List<string> InterviewClueList = new List<string>();
+
         public static string Killer;
         static int randomChooseKillerInt = 0;
 
         public static bool heardThatBruceWasDownstairsAt9 = false;//confirm with agatha
 
-      //  public static bool heardThatBruceWasDownstairsAt9 = false;//confirm with agatha
-      //  public static bool heardThatBruceWasDownstairsAt9 = false;//confirm with agatha
-      //  public static bool heardThatBruceWasDownstairsAt9 = false;//confirm with agatha
-      //  public static bool heardThatBruceWasDownstairsAt9 = false;//confirm with agatha
+        public static bool heardThatGabrielAsleepInLounge = false;
+        public static bool heardThatGabrielWasWatchingTheGame = false;
+        public static bool heardThatLarissaWasIntTheKitchen = false;//confirm with agatha
+        public static bool heardThatLarissaMadeHerMoneyAsAnAppraiser = false;
+        public static bool heardThatLarissaWasGoingToMoveToParis = false;
 
         public static void AddSuspectsWithInitialClues()//eliminates suspects whose clues were not found
         {
-            if (SearchCrimeScene.checkedBed)
-                SuspectList.Add("Irene");
-
-            if (SearchCrimeScene.checkedCloset)
-                SuspectList.Add("Agatha");
-
             if (SearchCrimeScene.checkedDesk)
                 SuspectList.Add("Peter");
 
@@ -42,7 +39,10 @@ namespace TheDinnerParty
         private static void ChooseRandomKiller()
         {
             Random r = new Random();
-            randomChooseKillerInt = r.Next(0, 3);
+            if (SuspectList.Count == 2)
+            {
+                randomChooseKillerInt = r.Next(0, 2);
+            }
 
             Killer = SuspectList[randomChooseKillerInt];
         }

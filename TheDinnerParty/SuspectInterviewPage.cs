@@ -12,6 +12,8 @@ namespace TheDinnerParty
         private List<string> InterviewText = new List<string>();
         private List<string> choiceList = new List<string>();
 
+        static bool alreadySeenIntroduction = false;
+
         public void StartInterview()
         {
             Console.Title = "The Dinner Party : Suspect Interviews";
@@ -22,14 +24,42 @@ namespace TheDinnerParty
             IntroductionText2();
         }
 
+        void DebugShowKiller()
+        {
+            InterviewText.Add("The killer is: " + Suspects.Killer);
+        }
+
         #region Texts
         void IntroductionText1()
         {
-            InterviewText.Add("\"A cop ushers you into the living room in the house.\"");
-            InterviewText.Add("\"All the suspects are sitting on a long couch, avoiding eye contact.\"");
-            InterviewText.Add("");
-            InterviewText.Add("There are 5 people. You have a list with their names on it.");
-            InterviewText.Add("Who are you going to talk to first?");
+            if (alreadySeenIntroduction)
+            {
+                InterviewText.Add("Who do you want to bring in for questioning?");
+                InterviewText.Add("Here is what you know:");
+                InterviewText.Add("");
+
+                foreach (string i in Suspects.InterviewClueList)
+                {
+                    InterviewText.Add(i);
+                }
+            }
+            else
+            {
+                InterviewText.Add("A cop ushers you into the living room in the house.");
+                InterviewText.Add("All the suspects are sitting on a long couch, avoiding eye contact.");
+                InterviewText.Add("You can bring anyone to the police station for questioning.");
+                InterviewText.Add("");
+                InterviewText.Add("There are 3 people. You have a list with their names on it.");
+                InterviewText.Add("It should be noted that everyone except the mother is a suspect.");
+                InterviewText.Add("The other officers have already cleared her, and she is unable to speak to anyone right now.");
+                InterviewText.Add("");
+                InterviewText.Add("Who are you going to talk to first?");
+
+                DebugShowKiller();
+
+
+                alreadySeenIntroduction = true;
+            }
             AddAllText();
             IntroductionChoices1();
         }
@@ -38,18 +68,17 @@ namespace TheDinnerParty
         {
             switch (playerInputToInt)
             {
-                case 1://agatha
-                    
+                case 1://peter
+                    PetersInterview petersInterview = new PetersInterview();
+                    petersInterview.StartPeterInterview();
                     break;
-                case 2://peter
-                    break;
-                case 3://gabriel
+                case 2://gabriel
                     GabrielsInterview gabrielsInterview = new GabrielsInterview();
                     gabrielsInterview.StartGabrielInterview();
                     break;
-                case 4://irene
-                    break;
-                case 5://larissa
+                case 3://larissa
+                    LarissasInterview larissasInterview = new LarissasInterview();
+                    larissasInterview.StartLarissaInterview();
                     break;
             }
         }
@@ -61,10 +90,8 @@ namespace TheDinnerParty
         #region choices
         void IntroductionChoices1()
         {
-            choiceList.Add("Agatha Grestin (mother)");
             choiceList.Add("Peter Zangara (uncle)");
             choiceList.Add("Gabriel Garrison (old friend)");
-            choiceList.Add("Irene Payne (mother's friend)");
             choiceList.Add("Larissa McCarthy (fiancee)");
             AddChoicesForInput();
         }       

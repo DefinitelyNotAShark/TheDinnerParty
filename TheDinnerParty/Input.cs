@@ -12,7 +12,6 @@ namespace TheDinnerParty
         public int playerInputToInt;
         int inputHeight = 28;
         static bool loopBreak = false;
-        NotesPage notes;
 
       
    
