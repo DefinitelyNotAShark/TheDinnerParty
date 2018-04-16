@@ -14,36 +14,30 @@ namespace TheDinnerParty
         public static string Killer;
         static int randomChooseKillerInt = 0;
 
-        public static bool heardThatBruceWasDownstairsAt9 = false;//confirm with agatha
-
         public static bool heardThatGabrielAsleepInLounge = false;
-        public static bool heardThatGabrielWasWatchingTheGame = false;
+        public static bool heardThatPeterWasInTheDiningRoom = false;
         public static bool heardThatLarissaWasIntTheKitchen = false;//confirm with agatha
-        public static bool heardThatLarissaMadeHerMoneyAsAnAppraiser = false;
+
         public static bool heardThatLarissaWasGoingToMoveToParis = false;
+
+        public static bool talkedToGabrielAboutLarissa = false;
+        public static bool talkedToPeterAboutLarissa = false;
+        public static bool gabrielDirectsAttentionToLarissa = false;
+        public static bool talkedToLarissaAboutPeterButLarissasTheKiller = false;
+   
 
         public static void AddSuspectsWithInitialClues()//eliminates suspects whose clues were not found
         {
-            if (SearchCrimeScene.checkedDesk)
-                SuspectList.Add("Peter");
-
-            if (SearchCrimeScene.checkedFloorboards)
-                SuspectList.Add("Larissa");
-
-            if (SearchCrimeScene.checkedTrashCan)
-                SuspectList.Add("Gabriel");
-
+            SuspectList.Add("Larissa");
+            SuspectList.Add("Gabriel");
+            SuspectList.Add("Peter");
             ChooseRandomKiller();
         }
 
         private static void ChooseRandomKiller()
         {
             Random r = new Random();
-            if (SuspectList.Count == 2)
-            {
-                randomChooseKillerInt = r.Next(0, 2);
-            }
-
+            randomChooseKillerInt = r.Next(0, 3);
             Killer = SuspectList[randomChooseKillerInt];
         }
     }

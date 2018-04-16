@@ -31,6 +31,7 @@ namespace TheDinnerParty
             TitleScreen myTitleScreen = new TitleScreen();
             SceneOfTheCrime crimeScenePage = new SceneOfTheCrime();
             Console.Title = "The Dinner Party";
+            Suspects.AddSuspectsWithInitialClues();//this is how the interface knows who the killer is
             DontAllowResize();
             myTitleScreen.DrawTitleScreen();
             Console.ReadKey();

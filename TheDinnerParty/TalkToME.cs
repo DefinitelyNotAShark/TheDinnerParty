@@ -47,6 +47,7 @@ namespace TheDinnerParty
             CrimeText.Add("");
             CrimeText.Add("Bruce was killed in his room between 10 and 11 last night.");
             CrimeText.Add("He was killed during a dinner party his mother was hosting.");
+            ClueAlert("The time of death was between 10 and 11");
             AddAllText();
             //choices
             choiceList.Add("Is there anything else important I should know?");
@@ -59,11 +60,12 @@ namespace TheDinnerParty
             //text
             CrimeText.Add("\"Glad you asked!\"");
             CrimeText.Add("");
-            CrimeText.Add("You also find out that he was strangled from behind.");
-            CrimeText.Add("The rope that he was strangled with hasn't been found yet.");
+            CrimeText.Add("You also find out that he was stabbed from behind with a knife.");
+            CrimeText.Add("The knife was a kitchen knife, and it hasn't been found.");
             CrimeText.Add("");
             CrimeText.Add("\"Based on the position he died in,");
             CrimeText.Add("It was likely someone he trusted who killed him.\"");
+            ClueAlert("The murder weapon was a KITCHEN knife.");
             AddAllText();
             //choices
             choiceList.Add("See if you can find out anything else...");

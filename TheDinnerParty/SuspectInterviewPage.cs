@@ -18,8 +18,7 @@ namespace TheDinnerParty
         {
             Console.Title = "The Dinner Party : Suspect Interviews";
             location = "House";
-            DrawScreen();
-            Suspects.AddSuspectsWithInitialClues();//this is how the interface knows who the killer is
+            DrawScreen();          
             IntroductionText1();
             IntroductionText2();
         }
@@ -37,6 +36,7 @@ namespace TheDinnerParty
                 InterviewText.Add("Who do you want to bring in for questioning?");
                 InterviewText.Add("Here is what you know:");
                 InterviewText.Add("");
+                DebugShowKiller();
 
                 foreach (string i in Suspects.InterviewClueList)
                 {

@@ -13,9 +13,8 @@ namespace TheDinnerParty
         private List<string> choiceList = new List<string>();
 
         bool loopBreak = false;
-        bool scriptStoryTold = false;
 
-        public void StartGabrielInterview()
+        public void StartLarissaInterview()
         {
             Console.Title = "The Dinner Party : Interview";
             location = "Police Station";
@@ -27,7 +26,6 @@ namespace TheDinnerParty
             while (!loopBreak)
             {
                 DrawScreen();
-                AddQuestionTypes();
                 GabrielQuestions();
             }
 
@@ -35,225 +33,157 @@ namespace TheDinnerParty
 
         private void GabrielDescription()
         {
-            GabrielText.Add("Gabriel Garrison is a thin man with large eyes.");
-            GabrielText.Add("When he sits down in the room for questioning, you notice how much he slouches.");
-            GabrielText.Add("He folds his spindly fingers in his lap.");
-            GabrielText.Add("\"What do you want to know?\" He asks.");
+            GabrielText.Add("Gabriel is a tall man with a bit of a slouch.");
+            GabrielText.Add("He looks tired and his clothes are stained.");
+            GabrielText.Add("He folds his spindly fingers in his lap");
+            GabrielText.Add("Here's what you know about Gabriel: ");
+            GabrielText.Add("- He's the author of a bestselling book.");
+            GabrielText.Add("- He's Bruce's best and oldest friend.");
+            GabrielText.Add("");
+            GabrielText.Add("\"How can I help,\" he asks.");
             AddAllText();
-            AddQuestionTypes();
+            GabrielQuestions();
         }
 
-        void AddQuestionTypes()
-        {
-            choiceList.Add("Questions about the murder");
-            choiceList.Add("Questions about Gabriel's relationship with Bruce");
-            choiceList.Add("Interview someone else");
-            AddChoicesForInput();
-            DrawScreen();
-        }
 
         //need another function here just for choices again
 
         void GabrielQuestions()
         {
+
+            choiceList.Add("\"Where were you from 10 to 11?\" (alibi)");
+
+            choiceList.Add("Interview someone else");
+
+            if (SearchCrimeScene.checkedTrashCan)
+                choiceList.Add("\"We found a script for a sequal to your book in the trash.\"");
+
+
+            AddChoicesForInput();
+            //sub questions
+            DrawScreen();
+
             switch (playerInputToInt)
             {
-                case 1://questions about murder
-                    GabrielText.Add("\"I want to know about what happened last night,\" you say.");
-                    GabrielText.Add("");
-                    GabrielText.Add("\"What a coincidence,\" he says. \"So do I\"");
-                    AddAllText();
-                    //choices
-                    choiceList.Add("When was the last time you saw Bruce alive?");
-                    choiceList.Add("Where were you from 10 to 11? (alibi)");
-                    AddChoicesForInput();
-                    //sub questions
-                    DrawScreen();
-                    switch (playerInputToInt)
+                case 1://where were you from 10 to 11
+                
+                        GabrielText.Add("\"It's hard to remember much of what happened last night.\"");
+                        GabrielText.Add("\"But after Bruce went to bed around 10, we all kind of split up.\"");
+                        GabrielText.Add("\"I went to the lounge to see if I could catch the game.\"");
+                        GabrielText.Add("\"I passed out a couple minutes of flipping through channels.\"");
+                        GabrielText.Add("");
+                        GabrielText.Add("\"When I woke up, the cops were here.\"");
+
+
+                    if (Suspects.Killer == "Peter")
                     {
-                        case 1://last time you saw bruce alive
-                            if (Suspects.Killer == "Gabriel")
-                            {//killer text
-                                GabrielText.Add("Gabriel rubs his face and pauses before answering.");
-                                GabrielText.Add("");
-                                GabrielText.Add("\"Ummm...I think I last saw him downstairs talking to his mother and Peter.\"");
-                                GabrielText.Add("\"That was maybe 9, or 9:30.\"");
-                                GabrielText.Add("\"I was drinking last night, so it's hard to remember.\"");
-                            }
-                            else
-                            {//inno text
-                                GabrielText.Add("Gabriel looks away for a second before answering.");
-                                GabrielText.Add("");
-                                GabrielText.Add("\"Ah, I saw him downstairs laughing with Ms. Grestin and Peter.\"");
-                                GabrielText.Add("\"That was around 9:30 or maybe...9.\"");
-                                GabrielText.Add("\"After that, he went to his room to bed early.\"");
-                            }
-                            AddAllText();
-
-                            if (Suspects.heardThatBruceWasDownstairsAt9 == false)
-                            {
-                                Suspects.heardThatBruceWasDownstairsAt9 = true;
-                                Suspects.InterviewClueList.Add("Gabriel claims Bruce was downstairs with his mom and uncle");
-                                ClueAlert("Gabriel claims Bruce was downstairs with his mother and uncle");
-                            }
-
-                            choiceList.Add("Got it.");
-                            AddChoicesForInput();
-                            break;
-                        case 2://where were you at time of the murder?
-                            if (Suspects.Killer == "Gabriel")
-                            {//killer text
-                                GabrielText.Add("\"We were having a pretty good time last night.\"");
-                                GabrielText.Add("\"You know...before...all of this happened.\"");
-                                GabrielText.Add("");
-                                GabrielText.Add("\"Peter got his good brandy out, and we all had a bit much to drink.\"");
-                                GabrielText.Add("\"I don't actually drink very often, and if you didn't notice,\" he gestures to his skinny body.");
-                                GabrielText.Add("\"I'm a bit of a lightweight. I'm afraid I didn't know when to stop.\"");
-                                GabrielText.Add("\"I fell asleep in the lounge. Maybe around 10.\"");
-
-                                if (Suspects.heardThatGabrielAsleepInLounge == false)
-                                {
-                                    Suspects.heardThatGabrielAsleepInLounge = true;
-                                    Suspects.InterviewClueList.Add("Gabriel claims that he was asleep in the lounge when the murder took place.");
-                                    ClueAlert("Gabriel claims he was asleep in the lounge at the time of the murder.");
-                                }
-                            }
-                            else
-                            {//inno text
-                                GabrielText.Add("\"After we were done chatting, we all kind of seperated.\"");
-                                GabrielText.Add("\"I didn't really keep track of where everyone else went.\"");
-                                GabrielText.Add("");
-                                GabrielText.Add("\"I had been looking forward to watching the match that was on that night.\"");
-                                GabrielText.Add("\"So I was in the lounge the whole time watching the game.\"");
-                                GabrielText.Add("\"It was on until about 11.\"");
-                                if (Suspects.heardThatGabrielWasWatchingTheGame == false)
-                                {
-                                    Suspects.heardThatGabrielWasWatchingTheGame = true;
-                                    Suspects.InterviewClueList.Add("Gabriel claims that he was watching the game at the time of the murder.");
-                                    ClueAlert("Gabriel claims he was watching a game in the lounge.");
-                                }
-                            }                          
-                            AddAllText();
-                            //choices
-                            choiceList.Add("Is there anyone that can confirm that you were there?");
-                            choiceList.Add("So none of the guests saw you past 10?");//both choices link to the same dialogue                           
-                            AddChoicesForInput();
-                            DrawScreen();
-                            //response text
-                            GabrielText.Add("\"Fraid not,\" he shrugs.");
-                            GabrielText.Add("\"I feel a bit useless, not knowing where everyone else was.\"");
-                            GabrielText.Add("\"I can't imagine anyone here wanting to hurt Bruce.\"");
-                            if (Suspects.Killer != "Gabriel")
-                            {//killer text
-                                GabrielText.Add("");
-                                GabrielText.Add("\"I can tell you that the Giants won the game.\"");
-                                GabrielText.Add("\"But I suppose that I could have just looked it up later,\"");
-                                GabrielText.Add("\"So I guess I'm not that much help.\"");
-                                AddAllText();
-                                choiceList.Add("That does help. Thank you.");
-                                AddChoicesForInput();
-                            }
-                            else
-                            {
-                                AddAllText();
-                                choiceList.Add("Okay.");
-                                AddChoicesForInput();
-                            }
-                            break;
+                        GabrielText.Add("\"Before I fell asleep, Peter came in and told me the game was over.\"");
+                        GabrielText.Add("\"That's all I remember about last night.\"");
                     }
-                    break;
-                case 2://questions about relationship with bruce
-                    GabrielText.Add("\"I want to know about your relationship with the deceased,\" you say.");
-                    GabrielText.Add("");
-                    GabrielText.Add("\"I'm an open book,\" he says grimly.");
-                    GabrielText.Add("\"What do you want to know?\"");
-                    AddAllText();
-                    //choices
-                    choiceList.Add("\"I hear you guys were old friends?\"");
-
-                    if(SearchCrimeScene.checkedTrashCan && scriptStoryTold ==false)
-                    choiceList.Add("CLUE: (story script) \"Why would he have a sequal to your story in his trash?\"");
-
-                    AddChoicesForInput();
-                    DrawScreen();
-                    switch (playerInputToInt)
+                    
+                    if (Suspects.heardThatGabrielAsleepInLounge == false)
                     {
-                        case 1://you were friends?
-                            GabrielText.Add("\"We've known each other a pretty long time.\"");
-                            GabrielText.Add("\"We went to the same high school.\"");
-                            GabrielText.Add("\"We bonded over our love for writing and football and camping.\"");
-                            GabrielText.Add("\"We just had a lot in common.\"");
-                            break;
-
-                        case 2://story script???
-                                GabrielText.Add("\"He did?\"");
-                                GabrielText.Add("Gabriel looks surprised.");
-                                GabrielText.Add("");
-                                GabrielText.Add("\"I... was it any good?\"");
-
-                            if (Suspects.Killer == "Gabriel")
-                            {
-                                GabrielText.Add("\"That doesn't really matter now, I guess.\"");
-                                GabrielText.Add("\"You know, I did get a call from him about a week ago.\"");
-                                GabrielText.Add("");
-                                GabrielText.Add("\"We're both writers, you see.\"");
-                                GabrielText.Add("\"Bruce was never as successful as me, but he was still pretty good.\"");
-                                GabrielText.Add("\"He could never work up the nerve to ask anyone to read his writing.\"");
-                                GabrielText.Add("\"Thats probably why it was in the trash.\"");
-                                GabrielText.Add("");
-                                GabrielText.Add("\"I guess he had some ideas about a sequal for my book.\"");
-                                GabrielText.Add("\"Is there a chance I'd get to read it?\"");
-                                GabrielText.Add("\"Maybe I could get it published in his honor or something.\"");
-                            }
-                            else
-                            {
-                                GabrielText.Add("\"Bruce...would probably want me to come clean about that...\"");
-                                AddAllText();
-                                //choices
-                                choiceList.Add("Come clean about what?");
-                                AddChoicesForInput();
-                                DrawScreen();
-                                GabrielText.Add("Gabriel leans back in his chair, and looks at the ground.");
-                                GabrielText.Add("");
-                                GabrielText.Add("\"We were writers, Bruce and I. He was always better than me.\"");
-                                GabrielText.Add("\"When we were in college, Bruce showed me a story he had written.\"");
-                                GabrielText.Add("\"It was good. Like really good.\"");
-                                GabrielText.Add("\"I tried to convince him to publish it, but he was too self-concious.\"");
-                                GabrielText.Add("\"He didn't think anyone would read it.\"");
-                                GabrielText.Add("");
-                                GabrielText.Add("\"But I sent it to a publisher. Just to get a professional opinion, you see.\"");
-                                GabrielText.Add("\"The publisher loved it. Wanted to get it made into a book. An actual book!\"");
-                                GabrielText.Add("\"But...the thing is...\"");
-                                GabrielText.Add("\"I published it under my name.\"");
-                                GabrielText.Add("\"I didn't try to steal the story from him! I just knew he didn't want his name out in the open.\"");
-                                GabrielText.Add("\"I had no idea it would be so popular.\"");
-                                AddAllText();
-                                //choices
-                                choiceList.Add("I see...");
-                                AddChoicesForInput();
-                                DrawScreen();
-                                GabrielText.Add("Gabriel fidgets in his seat.");
-                                GabrielText.Add("\"Bruce was not happy when he found out.\"");
-                                GabrielText.Add("\"Even though everyone loved his book, he didn't like that I'd gone behind his back.\"");
-                                GabrielText.Add("\"He didn't even want any of the money I'd made from selling the book.\"");
-                                GabrielText.Add("");
-                                GabrielText.Add("\"But...after a while...I guess he got tired of holding a grudge.\"");
-                                GabrielText.Add("\"I had no idea he was working on a sequal.\"");
-                            }
-                            break;
+                        Suspects.heardThatGabrielAsleepInLounge = true;
+                        Suspects.InterviewClueList.Add("Gabriel claims he was alseep in the lounge when the murder took place.");
+                        ClueAlert("Larissa claims he was asleep in the lounge.");
                     }
+
                     AddAllText();
-                    choiceList.Add("Thanks for telling me that.");
+                    choiceList.Add("Got it.");
                     AddChoicesForInput();
                     break;
-                case 3:
+
+                case 3://found story script
+                    GabrielText.Add("Gabriel looks surprised.");
+                    GabrielText.Add("You can't tell if he's surprised about the script's existance or that you found it.");
+                    GabrielText.Add("");
+
+                    if (Suspects.Killer == "Gabriel")
+                    {
+                        GabrielText.Add("\"Oh? Is it any good?.\"");
+                        GabrielText.Add("\"I knew he liked my story, but I never thought he'd write about it.\"");
+                        GabrielText.Add("\"Bruce and I have a lot in common.\"");
+                        GabrielText.Add("\"We're both writers.\"");
+                        GabrielText.Add("");
+                        GabrielText.Add("\"I think after my first book got so popular, he became a bit jealous of me.\"");
+                        GabrielText.Add("\"It didn't break up our friendship though, and I'm extremely grateful for that.\"");
+                        GabrielText.Add("\"Even when Bruce and Larissa got engaged, he still made time to spend weekends with me.\"");
+                        GabrielText.Add("");
+                        GabrielText.Add("\"Larissa didn't approve of us spending time together.\"");
+                        GabrielText.Add("\"I tried many times to make friends with her.\"");
+                        GabrielText.Add("\"She was always cold, and distant with me.\"");
+
+                        if (Suspects.talkedToGabrielAboutLarissa == false)
+                        {
+                            Suspects.talkedToGabrielAboutLarissa = true;
+                            Suspects.InterviewClueList.Add("Gabriel and Larissa don't get along.");
+                            ClueAlert("Gabriel claims Larissa has never liked him.");
+                        }
+
+                    }
+
+                    else
+                    {
+                        GabrielText.Add("She covers her face with her hands.");
+                        GabrielText.Add("\"He told you?\"");
+                        GabrielText.Add("\"Did he tell you it was all his idea?\"");
+                        GabrielText.Add("\"I swear, I didn't want to do it.\"");
+                        GabrielText.Add("");
+                        GabrielText.Add("\"He gave me his police badge.\"");
+                        GabrielText.Add("\"He told me how easy it would be to do it.\"");
+                        GabrielText.Add("\"He said he knew how much I needed the money.\"");
+                        GabrielText.Add("");
+
+                        AddAllText();
+                        choiceList.Add("\"What exactly did you do?\"");
+                        AddChoicesForInput();
+
+                        GabrielText.Add("\"It was so long ago. I was desperate.\"");
+                        GabrielText.Add("\"I used his badge to get into a museum at night.\"");
+                        GabrielText.Add("\"I showed my badge to the officers, said I was inspecting the security.\"");
+                        GabrielText.Add("");
+                        GabrielText.Add("\"I got a couple paintings off the walls\"");
+                        GabrielText.Add("\"I was so scared that security would come running any minute.\"");
+                        GabrielText.Add("\"But I got out with the paintings.\"");
+                        GabrielText.Add("");
+                        GabrielText.Add("\"They were easy to smuggle into the auction.\"");
+                        GabrielText.Add("\"We made so much money off of them...\"");
+                        GabrielText.Add("\"Peter took 60 percent of it. I got 40.\"");
+
+                        if (Suspects.Killer == "Peter")
+                        {
+                            GabrielText.Add("");
+                            GabrielText.Add("\"But...Recently...there have been some issues with him.\"");
+                            AddAllText();
+                            choiceList.Add("What do you mean?");
+                            AddChoicesForInput();
+
+                            GabrielText.Add("\"He's been calling us, threatening Bruce.\"");
+                            GabrielText.Add("\"He was asking for more money, or he'll turn me in.\"");
+                            GabrielText.Add("\"I mean, who would trust my word over a police officer's word?\"");
+                            GabrielText.Add("\"I'm so afraid...that...maybe that's the reason my husband is dead.\"");
+                        }
+                        GabrielText.Add("");
+                        GabrielText.Add("\"But He's no killer.\"");
+                        GabrielText.Add("\"He likes to keep his hands clean.\"");
+                        GabrielText.Add("\"If he wanted my husband dead, he wouldn't be a suspect right now.\"");
+                        GabrielText.Add("\"Oh God, please don't think the worst of me.\"");
+                        GabrielText.Add("\"I just want all these stupid secrets and grudges to stop.\"");
+                        AddAllText();
+                        choiceList.Add("\"You've been a lot of help.\"");
+                        AddChoicesForInput();
+
+                    }
+                    break;
+
+                case 2:
                     //go back to interview menu!
                     SuspectInterviewPage suspectInterviewPage = new SuspectInterviewPage();
                     suspectInterviewPage.StartInterview();
                     break;
-
             }
         }
+
 
         #region userInterface Functions
         void AddAllText()
@@ -268,5 +198,6 @@ namespace TheDinnerParty
             choiceList.Clear();
         }
         #endregion
+
     }
 }

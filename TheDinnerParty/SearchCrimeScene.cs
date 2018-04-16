@@ -22,6 +22,9 @@ namespace TheDinnerParty
 
         public static bool checkedTheCrimeScene;
 
+
+        bool loopBreak = false;
+
         public void Start()
         {
             DrawScreen();
@@ -30,23 +33,43 @@ namespace TheDinnerParty
 
             CrimeSceneDescription();//only use once
 
-            while (cluesFound < 3)
+            while (loopBreak == false)
             {               
                 choiceList.Add("Search bed");//add all choices regardless of what player has already seen
                 choiceList.Add("Search desk");
                 choiceList.Add("Search trash can");
                 choiceList.Add("Search floorboards");
-                choiceList.Add("Search closet");
 
                 AddChoicesForInput();
                 AllSearchDescriptions();
+
+                if (checkedTrashCan)
+                {
+                    if (checkedFloorboards)
+                    {
+                        loopBreak = true;
+                    }
+                }
             }
 
             checkedTheCrimeScene = true;
 
             if (TalkToME.talkedToTheME == true)
             {
-                IntroToInterview();
+                CrimeText.Add("");
+                CrimeText.Add("");
+                CrimeText.Add("");
+                CrimeText.Add("");
+                CrimeText.Add("");
+                CrimeText.Add("");
+                CrimeText.Add("");
+                CrimeText.Add("");
+                CrimeText.Add("\"Sir,\" says one of the cops,");
+                CrimeText.Add("\"I think it's time to interview the suspects...\"");
+                CrimeText.Add("He shows you to the door, and you feel as if you've overstayed your welcome.");
+                AddAllText();
+                choiceList.Add("Go interview suspects");
+                AddChoicesForInput();
                 DrawScreen();
                 SuspectInterviewPage suspectInterviewPage = new SuspectInterviewPage();
                 suspectInterviewPage.StartInterview();
@@ -83,7 +106,6 @@ namespace TheDinnerParty
             CrimeText.Add("There's a desk with papers on it.");
             CrimeText.Add("There's a trash can filled to the brim with papers.");
             CrimeText.Add("There are a couple of floorboards that look a bit loose.");
-            CrimeText.Add("There's a closet in the corner.");
             AddAllText();           
         }
 
@@ -101,19 +123,13 @@ namespace TheDinnerParty
                     {
                         CrimeText.Add("Nothing in the bed seems unusual.");
                         CrimeText.Add("There's a couple of unsuspicious old shirts under the bed.");
-                        CrimeText.Add("Right next to the shirts, you spot a couple of pink fake nails.");
-                        ClueAlert("Fake fingernails");
+                        CrimeText.Add("You have the cops cut the matress open.");
+                        CrimeText.Add("There's nothing inside. You just ruined a perfectly good matress.");
                         checkedBed = true;
 
-                        if (cluesFound == 1)
-                        {
-                            CrimeText.Add("");
-                            CrimeText.Add("A nearby cop catches your eye and taps his watch.");
-                            CrimeText.Add("Seems you only have time to check one more place.");
-                        }
-                        cluesFound++;
                         AddAllText();
                     }
+
                     break;
                 case 2://desk
                     if (checkedDesk)
@@ -123,9 +139,13 @@ namespace TheDinnerParty
                     {
                         CrimeText.Add("The papers on the desk are mostly old bills and letters.");
                         CrimeText.Add("The first drawer contains a jumble of office supplies.");
-                        CrimeText.Add("The second drawer has a half empty bottle of some strong smelling liquid.");
-                        CrimeText.Add("One of the officers identifies it as a mix of opiates and alcohol.");
-                        ClueAlert("Bottle of laudanum");
+                        CrimeText.Add("The second drawer is locked.");
+                        CrimeText.Add("You get an officer to break it open.");
+                        CrimeText.Add("There's a black journal in there.");
+                        CrimeText.Add("");
+                        CrimeText.Add("It contains a couple of strange dream entries.");
+                        CrimeText.Add("There's nothing in there that makes you think it could be a clue.");
+                        CrimeText.Add("After all, Bruce wasn't killed by a yellow monster that looked like his third grade teacher.");
                         checkedDesk = true;
 
                         if (cluesFound == 1)
@@ -134,7 +154,6 @@ namespace TheDinnerParty
                             CrimeText.Add("A nearby cop catches your eye and taps his watch.");
                             CrimeText.Add("Seems you only have time to check one more place.");
                         }
-                        cluesFound++;
                         AddAllText();
                     }
                     break;
@@ -153,14 +172,13 @@ namespace TheDinnerParty
                         CrimeText.Add("The first book was written by Gabriel Garrison, one of the guests.");
                         ClueAlert("Story script");
                         checkedTrashCan = true;
-
+                        cluesFound++;
                         if (cluesFound == 1)
                         {
                             CrimeText.Add("");
                             CrimeText.Add("A nearby cop catches your eye and taps his watch.");
                             CrimeText.Add("Seems you only have time to check one more place.");
                         }
-                        cluesFound++;
                         AddAllText();
                     }
                     break;
@@ -178,54 +196,18 @@ namespace TheDinnerParty
                         CrimeText.Add("Strangely, the fingerprints match those of the victim's fiancee, Larissa.");
                         ClueAlert("Police badge with fingerprints");
                         checkedFloorboards = true;
-
+                        cluesFound++;
                         if (cluesFound == 1)
                         {
                             CrimeText.Add("");
                             CrimeText.Add("A nearby cop catches your eye and taps his watch.");
                             CrimeText.Add("Seems you only have time to check one more place.");
                         }
-
-                        cluesFound++;
-                        AddAllText();
-                    }
-                    break;
-                case 5://closet
-                    if (checkedCloset)
-                        AlreadyCheckedAlert();
-
-                    else
-                    {
-                        CrimeText.Add("Surprisingly enough, there's a bunch of clothes in the closet.");
-                        CrimeText.Add("You push aside the clothes to find...");
-                        CrimeText.Add("");
-                        CrimeText.Add("More clothes. How surprising.");
-                        CrimeText.Add("Seems like there's nothing of note in the closet.");
-                        checkedCloset = true;
-
-                        if (cluesFound == 1)
-                        {
-                            CrimeText.Add("");
-                            CrimeText.Add("A nearby cop catches your eye and taps his watch.");
-                            CrimeText.Add("Seems you only have time to check one more place.");
-                        }
-                        cluesFound++;
                         AddAllText();
                     }
                     break;
             }//end switch
         }
-        private void IntroToInterview()
-        {
-            DrawScreen();
-            CrimeText.Add("\"Sir,\" says one of the cops,");
-            CrimeText.Add("\"I think it's time to interview the suspects...\"");
-            CrimeText.Add("He shows you to the door, and you feel as if you've overstayed your welcome.");
-            AddAllText();
-            choiceList.Add("Go interview suspects");
-            AddChoicesForInput();
-        }
-
 
         private void AlreadyCheckedAlert()
         {
