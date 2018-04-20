@@ -29,7 +29,6 @@ namespace TheDinnerParty
         public static void AddSuspectsWithInitialClues()//eliminates suspects whose clues were not found
         {
             SuspectList.Add("Larissa");
-            SuspectList.Add("Gabriel");
             SuspectList.Add("Peter");
             ChooseRandomKiller();
         }
@@ -37,7 +36,7 @@ namespace TheDinnerParty
         private static void ChooseRandomKiller()
         {
             Random r = new Random();
-            randomChooseKillerInt = r.Next(0, 3);
+            randomChooseKillerInt = r.Next(0, 2);
             Killer = SuspectList[randomChooseKillerInt];
         }
     }

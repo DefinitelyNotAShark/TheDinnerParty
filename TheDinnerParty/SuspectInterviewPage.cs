@@ -23,10 +23,6 @@ namespace TheDinnerParty
             IntroductionText2();
         }
 
-        void DebugShowKiller()
-        {
-            InterviewText.Add("The killer is: " + Suspects.Killer);
-        }
 
         #region Texts
         void IntroductionText1()
@@ -36,7 +32,6 @@ namespace TheDinnerParty
                 InterviewText.Add("Who do you want to bring in for questioning?");
                 InterviewText.Add("Here is what you know:");
                 InterviewText.Add("");
-                DebugShowKiller();
 
                 foreach (string i in Suspects.InterviewClueList)
                 {
@@ -54,8 +49,6 @@ namespace TheDinnerParty
                 InterviewText.Add("The other officers have already cleared her, and she is unable to speak to anyone right now.");
                 InterviewText.Add("");
                 InterviewText.Add("Who are you going to talk to first?");
-
-                DebugShowKiller();
 
 
                 alreadySeenIntroduction = true;

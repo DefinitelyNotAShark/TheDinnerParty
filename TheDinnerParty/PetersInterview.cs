@@ -56,7 +56,7 @@ namespace TheDinnerParty
                 choiceList.Add("\"(clue) Why is your police badge in Bruce's room?\"");
 
             if (Suspects.talkedToLarissaAboutPeterButLarissasTheKiller)
-                choiceList.Add("\"I can't get Larissa to admit anything about the money.\"");
+                choiceList.Add("\"(clue)I can't get Larissa to admit anything about the money.\"");
 
 
             AddChoicesForInput();
@@ -77,8 +77,9 @@ namespace TheDinnerParty
                     }
                     else
                     {//inno text
-                        PeterText.Add("\"She can confirm it, you know.\"");
+                        PeterText.Add("\"Why am I even here?\"");
                         PeterText.Add("\"Do you seriously think I'd kill my nephew?\"");
+                        PeterText.Add("\"I don't have time to answer you're stupid questions.\"");
                         PeterText.Add("");                       
                         PeterText.Add("\"Peter leans forward angrily.\"");
                         PeterText.Add("\"I was having drinks with Agatha in the dining room most of the night.\"");
@@ -197,11 +198,10 @@ namespace TheDinnerParty
                     PeterText.Add("\"She was in the kitchen. She had access to the knife.\"");
                     PeterText.Add("\"I don't know for sure that it was her, but I'd bet my life on it.\"");
                     PeterText.Add("\"I'm lucky I was talking to Agatha the whole night or she would have killed me too.\"");
+
                     AddAllText();
                     choiceList.Add("\"I see...\"");
-                    AddChoicesForInput();
-                    DrawScreen();
-
+                    AddChoicesForInput();                   
                     break;
 
                 case 2:

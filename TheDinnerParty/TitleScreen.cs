@@ -39,9 +39,22 @@ namespace TheDinnerParty
 
         void EnterText()
         {
-            SetCursorPosition(centeredEnterInt, 10);
+            SetCursorPosition(centeredEnterInt - 10, 9);
+            ForegroundColor = ConsoleColor.DarkRed;
+            WriteLine("A grisly murder,");
+
+            SetCursorPosition(centeredEnterInt - 2, 12);
+                ForegroundColor = ConsoleColor.DarkRed;
+            WriteLine("A house full of suspects,");
+
+            SetCursorPosition(centeredEnterInt + 7, 15);
+            ForegroundColor = ConsoleColor.DarkRed;
+            WriteLine("Welcome to the dinner party.");
+
+            SetCursorPosition(centeredEnterInt, 22);
             ForegroundColor = ConsoleColor.White;
             WriteLine("Press any key to start!");
+            
         }
     }
 }

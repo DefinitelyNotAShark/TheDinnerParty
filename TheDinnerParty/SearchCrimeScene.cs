@@ -18,7 +18,6 @@ namespace TheDinnerParty
         public static bool checkedDesk;
         public static bool checkedTrashCan;
         public static bool checkedFloorboards;
-        public static bool checkedCloset;
 
         public static bool checkedTheCrimeScene;
 

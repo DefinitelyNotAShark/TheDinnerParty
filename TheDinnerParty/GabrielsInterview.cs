@@ -14,7 +14,7 @@ namespace TheDinnerParty
 
         bool loopBreak = false;
 
-        public void StartLarissaInterview()
+        public void StartGabrielInterview()
         {
             Console.Title = "The Dinner Party : Interview";
             location = "Police Station";
@@ -56,7 +56,7 @@ namespace TheDinnerParty
             choiceList.Add("Interview someone else");
 
             if (SearchCrimeScene.checkedTrashCan)
-                choiceList.Add("\"We found a script for a sequal to your book in the trash.\"");
+                choiceList.Add("\"(Clue)We found a script for a sequal to your book in the trash.\"");
 
 
             AddChoicesForInput();
@@ -124,53 +124,12 @@ namespace TheDinnerParty
 
                     else
                     {
-                        GabrielText.Add("She covers her face with her hands.");
-                        GabrielText.Add("\"He told you?\"");
-                        GabrielText.Add("\"Did he tell you it was all his idea?\"");
-                        GabrielText.Add("\"I swear, I didn't want to do it.\"");
-                        GabrielText.Add("");
-                        GabrielText.Add("\"He gave me his police badge.\"");
-                        GabrielText.Add("\"He told me how easy it would be to do it.\"");
-                        GabrielText.Add("\"He said he knew how much I needed the money.\"");
-                        GabrielText.Add("");
+                        GabrielText.Add("Gabriel looks away.");
+                        GabrielText.Add("\"Oh. I didn't know he was working on that\"");
+                        GabrielText.Add("AUTHORS NOTE: this part of the story hasn't been written yet.");
 
                         AddAllText();
-                        choiceList.Add("\"What exactly did you do?\"");
-                        AddChoicesForInput();
-
-                        GabrielText.Add("\"It was so long ago. I was desperate.\"");
-                        GabrielText.Add("\"I used his badge to get into a museum at night.\"");
-                        GabrielText.Add("\"I showed my badge to the officers, said I was inspecting the security.\"");
-                        GabrielText.Add("");
-                        GabrielText.Add("\"I got a couple paintings off the walls\"");
-                        GabrielText.Add("\"I was so scared that security would come running any minute.\"");
-                        GabrielText.Add("\"But I got out with the paintings.\"");
-                        GabrielText.Add("");
-                        GabrielText.Add("\"They were easy to smuggle into the auction.\"");
-                        GabrielText.Add("\"We made so much money off of them...\"");
-                        GabrielText.Add("\"Peter took 60 percent of it. I got 40.\"");
-
-                        if (Suspects.Killer == "Peter")
-                        {
-                            GabrielText.Add("");
-                            GabrielText.Add("\"But...Recently...there have been some issues with him.\"");
-                            AddAllText();
-                            choiceList.Add("What do you mean?");
-                            AddChoicesForInput();
-
-                            GabrielText.Add("\"He's been calling us, threatening Bruce.\"");
-                            GabrielText.Add("\"He was asking for more money, or he'll turn me in.\"");
-                            GabrielText.Add("\"I mean, who would trust my word over a police officer's word?\"");
-                            GabrielText.Add("\"I'm so afraid...that...maybe that's the reason my husband is dead.\"");
-                        }
-                        GabrielText.Add("");
-                        GabrielText.Add("\"But He's no killer.\"");
-                        GabrielText.Add("\"He likes to keep his hands clean.\"");
-                        GabrielText.Add("\"If he wanted my husband dead, he wouldn't be a suspect right now.\"");
-                        GabrielText.Add("\"Oh God, please don't think the worst of me.\"");
-                        GabrielText.Add("\"I just want all these stupid secrets and grudges to stop.\"");
-                        AddAllText();
-                        choiceList.Add("\"You've been a lot of help.\"");
+                        choiceList.Add("\"Whatever\"");
                         AddChoicesForInput();
 
                     }

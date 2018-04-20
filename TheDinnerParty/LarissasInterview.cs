@@ -56,8 +56,12 @@ namespace TheDinnerParty
 
             choiceList.Add("Interview someone else");
 
+
+
             if (Suspects.talkedToPeterAboutLarissa)
-                choiceList.Add("\"Peter tells me that you two have a history.\"");
+            {
+                choiceList.Add("\"(Clue)Peter tells me that you two have a history.\"");
+            }
 
 
             AddChoicesForInput();
@@ -115,11 +119,14 @@ namespace TheDinnerParty
                     break;
 
                 case 3://peter and Larissa's history
+
+
                     LarissaText.Add("Larissa looks uncomfortable.");
                     LarissaText.Add("");
                     LarissaText.Add("\"We did know each other, yes.\"");
                     LarissaText.Add("\"It's not what you think. We were never together.\"");
                     LarissaText.Add("\"How much did Peter tell you about this?\"");
+
                     AddAllText();
                     choiceList.Add("\"He told me about what you did. (bluff)\"");
                     choiceList.Add("\"He didn't tell me much. Just that it had to do with how you got your money. (truth)\"");
@@ -160,6 +167,7 @@ namespace TheDinnerParty
                         AddAllText();
                         choiceList.Add("\"What exactly did you do?\"");
                         AddChoicesForInput();
+                        DrawScreen();
 
                         LarissaText.Add("\"It was so long ago. I was desperate.\"");
                         LarissaText.Add("\"I used his badge to get into a museum at night.\"");
@@ -180,23 +188,28 @@ namespace TheDinnerParty
                             AddAllText();
                             choiceList.Add("What do you mean?");
                             AddChoicesForInput();
+                            DrawScreen();
 
                             LarissaText.Add("\"He's been calling us, threatening Bruce.\"");
                             LarissaText.Add("\"He was asking for more money, or he'll turn me in.\"");
                             LarissaText.Add("\"I mean, who would trust my word over a police officer's word?\"");
                             LarissaText.Add("\"I'm so afraid...that...maybe that's the reason my husband is dead.\"");
                         }
-                        LarissaText.Add("");
-                        LarissaText.Add("\"But He's no killer.\"");
-                        LarissaText.Add("\"He likes to keep his hands clean.\"");
-                        LarissaText.Add("\"If he wanted my husband dead, he wouldn't be a suspect right now.\"");
-                        LarissaText.Add("\"Oh God, please don't think the worst of me.\"");
-                        LarissaText.Add("\"I just want all these stupid secrets and grudges to stop.\"");
-                        AddAllText();
-                        choiceList.Add("\"You've been a lot of help.\"");
-                        AddChoicesForInput();
+
+                        if (Suspects.Killer != "Peter")
+                        {
+                            LarissaText.Add("");
+                            LarissaText.Add("\"But He's no killer.\"");
+                            LarissaText.Add("\"He likes to keep his hands clean.\"");
+                            LarissaText.Add("\"If he wanted my husband dead, he wouldn't be a suspect right now.\"");
+                            LarissaText.Add("\"Oh God, please don't think the worst of me.\"");
+                            LarissaText.Add("\"I just want all these stupid secrets and grudges to stop.\"");
+                        }
 
                     }
+                    AddAllText();
+                    choiceList.Add("Got it.");
+                    AddChoicesForInput();
                     break;
 
                 case 2:
